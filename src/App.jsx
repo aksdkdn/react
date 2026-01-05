@@ -3,12 +3,16 @@ import { Routes, Route, Link } from 'react-router-dom'
 import Recommendations from './pages/Recommendations'
 import Login from './pages/Login'
 
-export default function App(){
+export default function App() {
   return (
-    <div style={{maxWidth: 980, margin: '0 auto', padding: 16, fontFamily: 'system-ui, sans-serif'}}>
-      <header style={{display:'flex', alignItems:'center', justifyContent:'space-between'}}>
-        <h2>🎬 Movie Recommender</h2>
-        <nav style={{display:'flex', gap: 12}}>
+    <div style={{ maxWidth: 980, margin: '0 auto', padding: 16, fontFamily: 'system-ui, sans-serif' }}>
+      <header style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <h2>🎬 Movie Recommender dsw08
+          <span style={{ marginLeft: 8, fontSize: 12, color: '#888' }}>
+            (deployed at {new Date().toLocaleTimeString()})
+          </span>
+        </h2>
+        <nav style={{ display: 'flex', gap: 12 }}>
           <Link to="/">Home</Link>
           <Link to="/recommendations">Recommendations</Link>
         </nav>
