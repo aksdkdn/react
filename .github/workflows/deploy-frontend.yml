@@ -28,25 +28,25 @@ jobs:
       - name: Setup SSH key
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.BASTION_SSH_KEY }}" > ~/.ssh/deploy.key
+          echo "${{ secrets.SERVER_SSH_KEY }}" > ~/.ssh/deploy.key
           chmod 600 ~/.ssh/deploy.key
-          ssh-keyscan -H ${{ secrets.BASTION_HOST }} >> ~/.ssh/known_hosts
+          ssh-keyscan -H "${{ secrets.SERVER_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null || true
 
       - name: Upload dist to bastion
         run: |
           ssh -i ~/.ssh/deploy.key \
-            ${{ secrets.BASTION_USER }}@${{ secrets.BASTION_HOST }} \
+            ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} \
             "mkdir -p ~/dist && rm -rf ~/dist/*"
 
           rsync -avz \
             -e "ssh -i ~/.ssh/deploy.key" \
             dist/ \
-            ${{ secrets.BASTION_USER }}@${{ secrets.BASTION_HOST }}:~/dist/
+            ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:~/dist/
 
       - name: Deploy from bastion to nginx server
         run: |
           ssh -i ~/.ssh/deploy.key \
-            ${{ secrets.BASTION_USER }}@${{ secrets.BASTION_HOST }} << 'EOF'
+            ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} << 'EOF'
               rsync -avz ~/dist/ nginx2b:/home/ubuntu/dist/
               ssh nginx2b << 'INNER'
                 sudo rm -rf /var/www/react/*
