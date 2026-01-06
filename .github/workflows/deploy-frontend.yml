@@ -50,8 +50,8 @@ jobs:
             ${{ secrets.BASTION_USER }}@${{ secrets.BASTION_HOST }} "
               rsync -avz ~/dist/ nginx2b:/home/ubuntu/dist/ &&
               ssh nginx2b '
-                sudo rm -rf /usr/share/nginx/html;* &&
-                sudo cp -r /home/ubuntu/dist/* /usr/share/nginx/html; &&
+                sudo rm -rf /usr/share/nginx/html/* &&
+                sudo cp -r /home/ubuntu/dist/* /usr/share/nginx/html/ &&
                 sudo systemctl reload nginx
               '
             "
