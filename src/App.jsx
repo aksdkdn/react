@@ -7,7 +7,7 @@ export default function App() {
   return (
     <div style={{ maxWidth: 980, margin: '0 auto', padding: 16, fontFamily: 'system-ui, sans-serif' }}>
       <header style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <h2>🎬 Movie Recommender dsw08
+        <h2>🎬 영화추천 자동배포 완료@@ dsw08
           <span style={{ marginLeft: 8, fontSize: 12, color: '#888' }}>
             (deployed at {new Date().toLocaleTimeString()})
           </span>
