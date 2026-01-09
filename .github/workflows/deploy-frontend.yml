@@ -55,3 +55,4 @@ jobs:
                 sudo systemctl reload nginx
               '
             "
+# 로드밸런서로 nginx2a 2b 운영하는경우 job 부터 다시 쓰면 됩니다.
